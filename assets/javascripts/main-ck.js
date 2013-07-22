@@ -1,0 +1,1 @@
+(function(e){function t(){var t=e("#illustration"),n=new THREE.WebGLRenderer;n.setSize(t.outerWidth(),t.outerHeight())}})(jQuery);
