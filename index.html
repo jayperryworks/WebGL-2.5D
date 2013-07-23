@@ -23,6 +23,8 @@
 
     <div id="illustration"></div>
 
+    <!-- <div id="test"></div> -->
+
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="assets/javascripts/vendor/jquery-1.10.2.min.js"><\/script>')</script>
     <script src="assets/javascripts/vendor/three.min.js"></script>
@@ -43,7 +45,7 @@
           NEAR = 1,
           FAR = 4000;
 
-        var renderer = new THREE.WebGLRenderer();
+        var renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(width, height);
         $container.append(renderer.domElement);
 
@@ -57,9 +59,19 @@
         camera.position.set(0, 0, 3);
         scene.add(camera);
 
+        /*var light = new THREE.DirectionalLight(0xffffff, 20);
+        light.position.set(0, 0, 1);
+        scene.add(light);*/
+
+        var mapURL = "/assets/images/forest.jpg";
+        mapURL.crossOrigin = "anonymous";
+        var texture = THREE.ImageUtils.loadTexture(mapURL),
+          material = new THREE.MeshBasicMaterial({map: texture});
+
         var geometry = new THREE.PlaneGeometry(1, 1);
-        var plane = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial());
+        var plane = new THREE.Mesh(geometry, material);
         scene.add(plane);
+
 
         renderer.render(scene, camera);
 

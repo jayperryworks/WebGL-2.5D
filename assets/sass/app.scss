@@ -9,3 +9,10 @@
 	background: #000;
 	border: 1px solid #999;
 }
+
+#test {
+	width: 200px;
+	height: 200px;
+	background: #999 url("../images/forest.jpg");
+	background-size: cover;
+}
